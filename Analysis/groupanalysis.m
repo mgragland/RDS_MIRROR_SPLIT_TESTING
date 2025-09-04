@@ -1,4 +1,5 @@
-function groupanalysis(Accuracy, lowervis, uppervis)
+function groupanalysis(Accuracy, lowervis, uppervis, multiple_sessions)
+
 
 
 if lowervis==1;
@@ -8,9 +9,9 @@ if lowervis==1;
     group_anti_lower=NaN(1,length(Accuracy));
     for i=1:size(Accuracy,2)
         group_corr_central(i)=Accuracy{1,i}(1);
-        group_corr_lower=Accuracy{1,i}(2);
+        group_corr_lower(i)=Accuracy{1,i}(2);
         group_anti_central(i)=Accuracy{2,i}(1);
-        group_anti_lower=Accuracy{2,i}(2);
+        group_anti_lower(i)=Accuracy{2,i}(2);
 
     end
 
@@ -48,7 +49,6 @@ if lowervis==1;
     ylabel('Accuracy According to V1 Output')
     title('Anti-Correlated Random Dot Stereograms')
     hold on
-    hold on
 
     for i=1:size(Accuracy,2)
         % Create the scatter plot
@@ -59,6 +59,29 @@ if lowervis==1;
         plot(x, Accuracy{2,i});  % '-o' adds a line with circle markers
         hold on
     end
+
+
+    if multiple_sessions==1
+        figure
+        label={'Central', 'Lower Peripheral'};
+        subplot(1,2,1)
+        x=1:2;
+        bar_corr_mult=[group_corr_central;group_corr_lower];
+        bar(x, bar_corr_mult)
+        ylim([0,1.2])
+        xticklabels(label);
+        ylabel('Accuracy According to V1 Output')
+        title('Correlated Random Dot Stereograms')
+        hold on
+        subplot(1,2,2)
+        bar_ant_mult=[group_anti_central;group_anti_lower];
+        bar(x, bar_ant_mult)
+        ylim([0,1.2])
+        xticklabels(label);
+        ylabel('Accuracy According to V1 Output')
+        title('Anti-Correlated Random Dot Stereograms')
+    end
+
 
 elseif uppervis==1 || lowervis==2;
     [numrows, numcols]= size(Accuracy);

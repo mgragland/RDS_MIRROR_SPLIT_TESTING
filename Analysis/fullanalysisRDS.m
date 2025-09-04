@@ -1,11 +1,12 @@
-directoryPath= 'C:\Users\raglandm\Desktop\Data';
+directoryPath='C:\Users\raglandm\Desktop\RDS DATA\Reliability Data\ATK';
 % Get a list of all files in the directory
 fileList = dir(directoryPath);
 % Filter out hidden files
 fileList = fileList(~startsWith({fileList.name}, '.'));
-lowervis=1; %1= inferior 2=L/R peripehral 
+lowervis=1; %1= inferior 2=L/R peripheral 
 uppervis=0;
 count=0;
+multiple_sessions=1; % yes=1 no=0 
 
 
 % Loop through each file in the directory
@@ -38,6 +39,6 @@ for i = 1:length(fileList)
     end
 end
 
-groupanalysis(Accuracy, lowervis, uppervis)
+groupanalysis(Accuracy, lowervis, uppervis, multiple_sessions)
 
 
