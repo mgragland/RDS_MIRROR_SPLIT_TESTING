@@ -1,0 +1,138 @@
+function [Accuracy_Table, SignalDetect_Table]=createsignaldetecttable(Trial_Index, Testing_Trial_Data, design, addtitle)
+
+center_y=design.Stimulus_center_xy_in_Pixel(2,2);
+left_x=design.Stimulus_center_xy_in_Pixel(1,1);
+right_x=design.Stimulus_center_xy_in_Pixel(3,1);
+SignalDetect_Table=zeros(2,2,3);
+
+% if antivscorr==1
+%     addtitle='Correlated';
+% elseif antivscorr==2 
+%     addtitle='Anticorrelated';
+% end
+
+% Let's assume that front= correct
+for i= 1:length(Trial_Index)
+    Trial=Testing_Trial_Data(Trial_Index(i));
+    a=Trial.TrialResponses.Task_Button_Response.Button_Characters; 
+    if strcmp(a, 'b')
+        Response=2;
+    elseif strcmp(a, 'space')
+        Response=1;
+    else
+        continue
+    end
+
+    if Trial.condition.y_stimulus==center_y % Center Trial
+        if Trial.FrontOrBack==1 && Response== 1
+            SignalDetect_Table(1,1,2)= SignalDetect_Table(1,1,2)+1; % Correct Front
+        elseif Trial.FrontOrBack==1 && Response ~= 1
+            SignalDetect_Table(2,1,2)= SignalDetect_Table(2,1,2)+1; % False Alarm 
+        elseif Trial.FrontOrBack==2 && Response== 2
+            SignalDetect_Table(2,2,2)= SignalDetect_Table(2,2,2)+1; % Correct Rejection 
+        elseif Trial.FrontOrBack==2 && Response ~= 2
+            SignalDetect_Table(1,2,2)= SignalDetect_Table(1,2,2)+1; %Miss 
+        end
+          
+    elseif Trial.condition.x_stimulus==left_x % Left  Trial
+        if Trial.FrontOrBack==1 && Response==1
+            SignalDetect_Table(1,1,1)= SignalDetect_Table(1,1,1)+1; % Correct Front
+        elseif Trial.FrontOrBack==1 && Response ~= 1
+            SignalDetect_Table(2,1,1)= SignalDetect_Table(2,1,1)+1; % Miss
+        elseif Trial.FrontOrBack==2 && Response==2
+            SignalDetect_Table(2,2,1)= SignalDetect_Table(2,2,1)+1; % Correct Back
+        elseif Trial.FrontOrBack==2 && Response ~= 2
+            SignalDetect_Table(1,2,1)= SignalDetect_Table(1,2,1)+1; % WRONG BACK 
+        end
+      
+    elseif Trial.condition.x_stimulus==right_x % Left  Trial
+        if Trial.FrontOrBack==1 && Response==1
+            SignalDetect_Table(1,1,3)= SignalDetect_Table(1,1,3)+1; % Correct Front
+        elseif Trial.FrontOrBack==1 && Response ~= 1
+            SignalDetect_Table(2,1,3)= SignalDetect_Table(2,1,3)+1; % Miss
+        elseif Trial.FrontOrBack==2 && Response==2
+            SignalDetect_Table(2,2,3)= SignalDetect_Table(2,2,3)+1; % Correct Back
+        elseif Trial.FrontOrBack==2 && Response ~= 2
+            SignalDetect_Table(1,2,3)= SignalDetect_Table(1,2,3)+1; % Correct Back
+        end
+        SignalDetect_vector_right=[SignalDetect_Table(1,1,3),SignalDetect_Table(2,1,3), SignalDetect_Table(1,2,3), SignalDetect_Table(2,2,3)];
+        Category={'Correct Front', 'Miss', 'False Alarm', 'Correct Rejection'};
+    end
+end
+
+SignalDetect_vector_central=[SignalDetect_Table(1,1,2),SignalDetect_Table(2,1,2), SignalDetect_Table(1,2,2), SignalDetect_Table(2,2,2)];
+Category={'Correct Front', 'Miss', 'False Alarm', 'Correct Rejection'};
+
+figure
+subplot(1,3,1)
+bar(SignalDetect_vector_central)
+xticklabels(Category)
+ylim([0,50])
+ylabel('Number of Trials')
+title([addtitle,  'Central Trials'])
+
+Accuracy_Table.Central.Front= SignalDetect_Table(1,1,2)/(SignalDetect_Table(1,1,2)+SignalDetect_Table(2,1,2));
+Accuracy_Table.Central.Back= SignalDetect_Table(2,2,2)/(SignalDetect_Table(1,2,2)+SignalDetect_Table(2,2,2));
+Accuracy_Table.Central.All= (SignalDetect_Table(1,1,2)+SignalDetect_Table(2,2,2))/(SignalDetect_Table(1,1,2)+ SignalDetect_Table(1,2,2)+ SignalDetect_Table(2,1,2)+ SignalDetect_Table(2,2,2));
+
+SignalDetect_vector_left=[SignalDetect_Table(1,1,1),SignalDetect_Table(2,1,1), SignalDetect_Table(1,2,1), SignalDetect_Table(2,2,1)];
+Category={'Correct Front', 'Miss', 'False Alarm', 'Correct Rejection'};
+
+subplot(1,3,2);
+bar(SignalDetect_vector_left)
+xticklabels(Category)
+ylim([0,50])
+ylabel('Number of Trials')
+title([addtitle,  'Left Peripheral Trials'])
+
+Accuracy_Table.LeftPeripheral.Front= SignalDetect_Table(1,1,1)/(SignalDetect_Table(1,1,1)+SignalDetect_Table(2,1,1));
+Accuracy_Table.LeftPeripheral.Back= SignalDetect_Table(2,2,1)/(SignalDetect_Table(1,2,1)+SignalDetect_Table(2,2,1));
+Accuracy_Table.LeftPeripheral.All= (SignalDetect_Table(1,1,1)+SignalDetect_Table(2,2,1))/(SignalDetect_Table(1,1,1)+ SignalDetect_Table(1,2,1)+ SignalDetect_Table(2,1,1)+ SignalDetect_Table(2,2,1));
+
+SignalDetect_vector_right=[SignalDetect_Table(1,1,3),SignalDetect_Table(2,1,3), SignalDetect_Table(1,2,3), SignalDetect_Table(2,2,3)];
+Category={'Correct Front', 'Miss', 'False Alarm', 'Correct Rejection'};
+
+subplot(1,3,3);
+bar(SignalDetect_vector_right)
+xticklabels(Category)
+ylim([0,50])
+ylabel('Number of Trials')
+title([addtitle,  'Right Trials'])
+
+Accuracy_Table.RightPeripheral.Front= SignalDetect_Table(1,1,3)/(SignalDetect_Table(1,1,3)+SignalDetect_Table(2,1,3));
+Accuracy_Table.RightPeripheral.Back= SignalDetect_Table(2,2,3)/(SignalDetect_Table(1,2,3)+SignalDetect_Table(2,2,3));
+Accuracy_Table.RightPeripheral.All= (SignalDetect_Table(1,1,3)+SignalDetect_Table(2,2,3))/(SignalDetect_Table(1,1,3)+ SignalDetect_Table(1,2,3)+ SignalDetect_Table(2,1,3)+ SignalDetect_Table(2,2,3));
+
+
+
+central=[Accuracy_Table.Central.Front, Accuracy_Table.Central.Back];
+left=[Accuracy_Table.LeftPeripheral.Front, Accuracy_Table.LeftPeripheral.Back];
+right=[Accuracy_Table.RightPeripheral.Front, Accuracy_Table.RightPeripheral.Back]; 
+labels={'Front', 'Back'};
+
+figure;
+subplot(3,1,1);
+bar(central);
+xticklabels(labels);
+ylim([0,1]);
+ylabel('Accuracy for Trials');
+title([addtitle, 'Central']);
+
+subplot(3,1,2);
+bar(left);
+xticklabels(labels);
+ylim([0,1]);
+ylabel('Accuracy for Trials');
+title([addtitle, 'Left']);
+
+subplot(3,1,3);
+bar(right);
+xticklabels(labels);
+ylim([0,1]);
+ylabel('Accuracy for Trials');
+title([addtitle, 'Right']);
+% saveas(gcf, fileName2, 'jpg');
+end
+
+
+
