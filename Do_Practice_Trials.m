@@ -52,6 +52,7 @@ while Do_AnotherRound ==1
         Instruction(1).txt= 'You have done a great job!! Now, you are ready for the task. Please be confident enough and trust your intuition'
         Instruction(1).xy = [0.2, 0.35];
         Prompt_Messages_to_Screen(design, SetUp_Info,  Instruction);
+        Wait_For_RightArrowKey;
     end
     if Do_AnotherRound==1
         N = length(This_TrialSequence);
