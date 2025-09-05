@@ -1,4 +1,4 @@
-directoryPath='C:\Users\raglandm\Desktop\RDS DATA\Reliability Data\ATK';
+directoryPath='C:\Users\raglandm\Desktop\RDS DATA\Reliability Data\CJT';
 % Get a list of all files in the directory
 fileList = dir(directoryPath);
 % Filter out hidden files
@@ -21,6 +21,8 @@ for i = 1:length(fileList)
         filePath = fullfile(directoryPath, fileList(i).name);
         fprintf('Processing file: %s\n', filePath);
         load(filePath)
+
+        % Determine Accuracy of Trials 
         if lowervis==1;
             [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count)
             Accuracy{2,i}=Accuracy_Anti;
@@ -36,6 +38,9 @@ for i = 1:length(fileList)
         else
             [Accuracy]=MGR_graphresults(filePath, count, fileList, Accuracy)
         end
+
+        % Determine reaction times for trials 
+        rt_lowervisualfield(filePath, count)
     end
 end
 
