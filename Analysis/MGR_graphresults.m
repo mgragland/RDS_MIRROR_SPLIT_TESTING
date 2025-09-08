@@ -1,4 +1,4 @@
-function [Accuracy]=MGR_graphresults(filePath, count, fileList, Accuracy)
+function [Accuracy]=MGR_graphresults(filePath, count, fileList, Accuracy, savefigures)
 load(filePath)
 folderPath= '/users/madelineragland/FLAP DATA/RDSfigures'
 fileName1 = fullfile(folderPath, [Subject_Info.Name, ' V1 Output', '.jpg']);
@@ -51,7 +51,7 @@ Correlated_Trials_Dynamic= [Correlated_Trials_Table_Dynamic(3,3,1), Correlated_T
 Anticorrelated_Trials_Static=[Anticorrelated_Trials_Table_Static(3,3,1), Anticorrelated_Trials_Table_Static(3,3,2), Anticorrelated_Trials_Table_Static(3,3,3)];
 Anticorrelated_Trials_Dynamic=[Anticorrelated_Trials_Table_Dynamic(3,3,1), Anticorrelated_Trials_Table_Dynamic(3,3,2), Anticorrelated_Trials_Table_Dynamic(3,3,3)];
 
-figure 
+fig1=figure 
 subplot(2,2,1) 
 graph1= Correlated_Trials_Static; 
 bar(graph1);
@@ -83,6 +83,10 @@ ylabel('Accuracy based on V1 Output');
 xticklabels({'Left', 'Center', 'Right'});
 title('Dynamic Anticorrelated Trials');
 ylim([0 1]);
+fileName='Accuracy.jpg';
+
+fullFilePath = fullfile(savefigures, fileName);
+saveas(fig1, fullFilePath);  % Saves as JPG if .jpg extension is used
 
 
 %% Group Analysis 

@@ -1,4 +1,4 @@
-function groupanalysis(Accuracy, lowervis, uppervis, multiple_sessions)
+function groupanalysis(Accuracy, lowervis, uppervis, multiple_sessions, savefigures)
 
 
 
@@ -17,7 +17,7 @@ if lowervis==1;
 
 
     %% Correlated Trials
-    figure
+    group_fig=figure;
     label={'Central', 'Lower Peripheral'};
     subplot(1,2,1)
     x=1:2;
@@ -60,9 +60,14 @@ if lowervis==1;
         hold on
     end
 
+    fileName='Group_accuracy_w_IndividualData.jpg';
+    fullFilePath = fullfile(savefigures, fileName);
+    saveas(group_fig, fullFilePath);  % Saves as JPG if .jpg extension is used
+
+
 
     if multiple_sessions==1
-        figure
+        mult_sessions=figure;
         label={'Central', 'Lower Peripheral'};
         subplot(1,2,1)
         x=1:2;
@@ -80,6 +85,10 @@ if lowervis==1;
         xticklabels(label);
         ylabel('Accuracy According to V1 Output')
         title('Anti-Correlated Random Dot Stereograms')
+        fileName='Group_accuracy_multsessions.jpg';
+        fullFilePath = fullfile(savefigures, fileName);
+        saveas(mult_sessions, fullFilePath);  % Saves as JPG if .jpg extension is used
+
     end
 
 

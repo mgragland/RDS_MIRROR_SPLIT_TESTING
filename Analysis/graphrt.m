@@ -10,7 +10,7 @@ sd_correct_anti=[std(rt_correct_central_anti), std(rt_correct_central_anti)]
 sd_incorrect_corr=[std(rt_incorrect_central_corr), std(rt_incorrect_lower_corr)]
 sd_incorrect_anti=[std(rt_incorrect_central_anti), std(rt_incorrect_lower_anti)]
 
-figure 
+rt_fig=figure 
 subplot(2,2,1)
 x=1:2;
 b=bar(x, correct_corr)
@@ -47,4 +47,10 @@ errorbar(x_pts, incorrect_anti, sd_incorrect_anti, ...
     'k', 'linestyle', 'none', 'linewidth', 1.5);  % Add error barsylim([0, 0.8])
 ylim([0, 1.5])
 title('RT for Incorrect Anti-Correlated Trials')
+
+fileName = sprintf('RT_lowervisfield%d.jpg', count);
+fullFilePath = fullfile(savefigures, fileName);
+saveas(rt_fig, fullFilePath);  % Saves as JPG if .jpg extension is used
+
+
 

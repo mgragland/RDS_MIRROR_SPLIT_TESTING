@@ -1,4 +1,4 @@
-function rt_lowervisualfield(filePath, count)
+function rt_lowervisualfield(filePath, count, savefigures)
 load(filePath)
 Trial_Data=Testing_Trial_Data;
 
@@ -102,4 +102,6 @@ for i=1:length(Trials_Corr_Dynamic)
     end
 end
 
+
+%% Graph the RT
 graphrt

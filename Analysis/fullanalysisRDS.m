@@ -1,4 +1,13 @@
-directoryPath='C:\Users\raglandm\Desktop\RDS DATA\Reliability Data\CJT';
+subject='AA'
+directoryPath=['C:\Users\raglandm\Desktop\RDS DATA\Reliability Data\' subject];
+savefigures=['C:\Users\raglandm\Desktop\RDS DATA\Reliability Data\figures\' subject]
+
+if ~exist("savefigures", 'dir')
+    mkdir(savefigures);
+end
+
+
+% Initialize
 % Get a list of all files in the directory
 fileList = dir(directoryPath);
 % Filter out hidden files
@@ -6,14 +15,14 @@ fileList = fileList(~startsWith({fileList.name}, '.'));
 lowervis=1; %1= inferior 2=L/R peripheral 
 uppervis=0;
 count=0;
-multiple_sessions=1; % yes=1 no=0 
+multiple_sessions=0; % yes=1 no=0 
 
 
 % Loop through each file in the directory
 for i = 1:length(fileList)
     count=count+1;
     if i==1;
-        Accuracy=cell(2,length(fileList))
+        Accuracy=cell(2,length(fileList));
     end
     % Check if the current item is a file (not a folder)
     if ~fileList(i).isdir
@@ -24,7 +33,7 @@ for i = 1:length(fileList)
 
         % Determine Accuracy of Trials 
         if lowervis==1;
-            [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count)
+            [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count, savefigures)
             Accuracy{2,i}=Accuracy_Anti;
             Accuracy{1,i}=Accuracy_Corr;
         elseif uppervis==1;
@@ -36,14 +45,14 @@ for i = 1:length(fileList)
             Accuracy{2,i}=Accuracy_Anti;
             Accuracy{1,i}=Accuracy_Corr;
         else
-            [Accuracy]=MGR_graphresults(filePath, count, fileList, Accuracy)
+            [Accuracy]=MGR_graphresults(filePath, count, fileList, Accuracy, savefigures);
         end
 
         % Determine reaction times for trials 
-        rt_lowervisualfield(filePath, count)
+        rt_lowervisualfield(filePath, count, savefigures);
     end
 end
 
-groupanalysis(Accuracy, lowervis, uppervis, multiple_sessions)
+groupanalysis(Accuracy, lowervis, uppervis, multiple_sessions, savefigures)
 
 
