@@ -1,4 +1,4 @@
-function rt_lowervisualfield(filePath, count, savefigures)
+function rt_lowervisualfield(filePath, count, savefigures, fixation_y)
 load(filePath)
 Trial_Data=Testing_Trial_Data;
 
@@ -47,7 +47,7 @@ for i=1:length(Trials_Anti_Dynamic)
     else
         continue
     end
-    if Trials_Anti_Dynamic(i).condition.y_fixation==720
+    if Trials_Anti_Dynamic(i).condition.y_fixation==fixation_y(2) %central
         if Trials_Anti_Dynamic(i).FrontOrBack==Response
             stimulus_stop_time=Trials_Anti_Dynamic(i).StimulusFrame_OnsetTimes(end); %dynamic stimuli so take the last time point for the final frame shown
             pt_rt_button=Trials_Anti_Dynamic(i).TrialResponses.Task_Button_Response.Time
@@ -57,7 +57,7 @@ for i=1:length(Trials_Anti_Dynamic)
             pt_rt_button=Trials_Anti_Dynamic(i).TrialResponses.Task_Button_Response.Time
             rt_incorrect_central_anti(end+1) = pt_rt_button-stimulus_stop_time; 
         end
-    elseif Trials_Anti_Dynamic(i).condition.y_fixation==496
+    elseif Trials_Anti_Dynamic(i).condition.y_fixation==fixation_y(1)
         if Trials_Anti_Dynamic(i).FrontOrBack==Response
             stimulus_stop_time=Trials_Anti_Dynamic(i).StimulusFrame_OnsetTimes(end); %dynamic stimuli so take the last time point for the final frame shown
             pt_rt_button=Trials_Anti_Dynamic(i).TrialResponses.Task_Button_Response.Time;
@@ -79,7 +79,7 @@ for i=1:length(Trials_Corr_Dynamic)
     else
         continue
     end
-    if Trials_Corr_Dynamic(i).condition.y_fixation==720
+    if Trials_Corr_Dynamic(i).condition.y_fixation==fixation_y(2) %central 
         if Trials_Corr_Dynamic(i).FrontOrBack==Response
             stimulus_stop_time=Trials_Corr_Dynamic(i).StimulusFrame_OnsetTimes(end); %dynamic stimuli so take the last time point for the final frame shown
             pt_rt_button=Trials_Corr_Dynamic(i).TrialResponses.Task_Button_Response.Time;
@@ -89,7 +89,7 @@ for i=1:length(Trials_Corr_Dynamic)
             pt_rt_button=Trials_Corr_Dynamic(i).TrialResponses.Task_Button_Response.Time;
             rt_incorrect_central_corr(end+1) = pt_rt_button-stimulus_stop_time; 
         end
-    elseif Trials_Corr_Dynamic(i).condition.y_fixation==496
+    elseif Trials_Corr_Dynamic(i).condition.y_fixation==fixation_y(1) %peripheral
         if Trials_Corr_Dynamic(i).FrontOrBack==Response
             stimulus_stop_time=Trials_Corr_Dynamic(i).StimulusFrame_OnsetTimes(end); %dynamic stimuli so take the last time point for the final frame shown
             pt_rt_button=Trials_Corr_Dynamic(i).TrialResponses.Task_Button_Response.Time;

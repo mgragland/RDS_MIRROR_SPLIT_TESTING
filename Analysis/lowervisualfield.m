@@ -1,9 +1,11 @@
-function [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count, savefigures)
+function [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count, savefigures, fixation_y)
 load(filePath)
 Trial_Data=Testing_Trial_Data;
 NTrials = length(Trial_Data);
 Correlated_Trial_Index_Dynamic=[];
 AntiCorrelated_Trial_Index_Dynamic=[];
+AntiCorrelated_Trial_Index_Static=[];
+Correlated_Trial_Index_Static=[];
 
 for i=1:length(Trial_Data)
     if Testing_Trial_Data(i).condition.PresentationDuration==Testing_Trial_Data(i).condition.PresentationPeriod
@@ -39,13 +41,13 @@ for i=1:length(Trials_Anti_Dynamic)
     else
         continue
     end
-    if Trials_Anti_Dynamic(i).condition.y_fixation==720 %720 % 900 
+    if Trials_Anti_Dynamic(i).condition.y_fixation==fixation_y(2) %720 % 900 
         if Trials_Anti_Dynamic(i).FrontOrBack==Response
             Correct_central_anti=Correct_central_anti+1; 
         else
             Incorrect_central_anti=Incorrect_central_anti+1;
         end
-    elseif Trials_Anti_Dynamic(i).condition.y_fixation==496 %496 % 620
+    elseif Trials_Anti_Dynamic(i).condition.y_fixation==fixation_y(1) %496 % 620
         if Trials_Anti_Dynamic(i).FrontOrBack==Response
             Correct_lower_anti=Correct_lower_anti+1; 
         else
@@ -76,13 +78,13 @@ for i=1:length(Trials_Corr_Dynamic)
     else
         continue
     end
-    if Trials_Corr_Dynamic(i).condition.y_fixation==720 %720 %900 
+    if Trials_Corr_Dynamic(i).condition.y_fixation==fixation_y(2) %central 
         if Trials_Corr_Dynamic(i).FrontOrBack==Response
             Correct_central_corr=Correct_central_corr+1; 
         else
             Incorrect_central_corr=Incorrect_central_corr+1;
         end
-    elseif Trials_Corr_Dynamic(i).condition.y_fixation==496 %496 %620 
+    elseif Trials_Corr_Dynamic(i).condition.y_fixation==fixation_y(1) % lower periphery  
         if Trials_Corr_Dynamic(i).FrontOrBack==Response
             Correct_lower_corr=Correct_lower_corr+1; 
         else
@@ -94,8 +96,10 @@ for i=1:length(Trials_Corr_Dynamic)
     Accuracy_central_corr=Correct_central_corr/total_central_corr;
     Accuracy_lower_corr= Correct_lower_corr/total_lower_corr;
 end
+
+
 label={'Central', 'Lower Peripheral'}
-fig_low=figure 
+fig_low=figure; 
 subplot(2,1,1)
 Corr_trials=[Accuracy_central_corr,Accuracy_lower_corr]
 Anti_trials=[Accuracy_central_anti, Accuracy_lower_anti]

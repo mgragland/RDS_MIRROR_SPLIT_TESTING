@@ -1,6 +1,11 @@
-subject='AA'
-directoryPath=['C:\Users\raglandm\Desktop\RDS DATA\Reliability Data\' subject];
-savefigures=['C:\Users\raglandm\Desktop\RDS DATA\Reliability Data\figures\' subject]
+% For specific subject analysis 
+% subject='JH'
+% directoryPath=['C:\Users\raglandm\Desktop\RDS DATA\Testing_Parameters\Location\Inferior_PeripheralVisField\1.5\' subject];
+% savefigures=['C:\Users\raglandm\Desktop\RDS DATA\figures\' subject]
+
+% For group level analysis 
+directoryPath=['C:\Users\raglandm\Desktop\RDS DATA\Testing_Parameters\Location\Inferior_PeripheralVisField\Fixation Moves\Feb']
+savefigures=['C:\Users\raglandm\Desktop\RDS DATA\Testing_Parameters\Location\Inferior_PeripheralVisField\Fixation Moves\Feb\figures']
 
 if ~exist("savefigures", 'dir')
     mkdir(savefigures);
@@ -16,6 +21,7 @@ lowervis=1; %1= inferior 2=L/R peripheral
 uppervis=0;
 count=0;
 multiple_sessions=0; % yes=1 no=0 
+group=1; %1=yes to group analysis 
 
 
 % Loop through each file in the directory
@@ -31,9 +37,13 @@ for i = 1:length(fileList)
         fprintf('Processing file: %s\n', filePath);
         load(filePath)
 
+        % Determine the location of the fixation cross for each condition 
+
         % Determine Accuracy of Trials 
         if lowervis==1;
-            [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count, savefigures)
+            fixation_y(1)=design.Conditions(1).y_fixation % Lower Periphery
+            fixation_y(2)=design.Conditions(2).y_fixation; % Center
+            [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count, savefigures, fixation_y)
             Accuracy{2,i}=Accuracy_Anti;
             Accuracy{1,i}=Accuracy_Corr;
         elseif uppervis==1;
@@ -49,10 +59,12 @@ for i = 1:length(fileList)
         end
 
         % Determine reaction times for trials 
-        rt_lowervisualfield(filePath, count, savefigures);
+        rt_lowervisualfield(filePath, count, savefigures, fixation_y);
     end
 end
 
-groupanalysis(Accuracy, lowervis, uppervis, multiple_sessions, savefigures)
+if group==1
+    groupanalysis(Accuracy, lowervis, uppervis, multiple_sessions, savefigures)
+end
 
 
