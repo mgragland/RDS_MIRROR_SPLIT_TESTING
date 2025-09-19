@@ -41,9 +41,7 @@ for i = 1:length(fileList)
 
         % Determine Accuracy of Trials 
         if lowervis==1;
-            fixation_y(1)=design.Conditions(1).y_fixation % Lower Periphery
-            fixation_y(2)=design.Conditions(2).y_fixation; % Center
-            [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count, savefigures, fixation_y)
+            [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count, savefigures)
             Accuracy{2,i}=Accuracy_Anti;
             Accuracy{1,i}=Accuracy_Corr;
         elseif uppervis==1;
