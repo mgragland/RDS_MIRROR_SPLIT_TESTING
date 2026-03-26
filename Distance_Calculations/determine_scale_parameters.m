@@ -1,4 +1,4 @@
-Calculation_RDS_prompt={'PTB?', 'Display Width (mm)', 'Display Height (mm)', 'Display Width (pixels)', 'Display Height (pixels)', 'DVA (Distance to Stimulus)', 'Size of Disk (radius)', 'Size of Dots', 'Depth Magnitude', 'Distance from observer to screen'}
+Calculation_RDS_prompt={'PTB?', 'Display Width (mm)', 'Display Height (mm)', 'Display Width (pixels)', 'Display Height (pixels)', 'DVA (Distance to Stimulus)', 'Size of Disk (radius)', 'Size of Dots', 'Depth Magnitude', 'Stimulus Center', 'Distance from observer to screen'}
 Calculation__RDS_dialog_title='Give_Exp_Information';
 num_lines=1;
 Calculation__RDS_default_answer={'no', '698', '393',  '1920', '1080', '5', '2.5', '0.087', '0.087' , '700'};
@@ -43,8 +43,7 @@ pix_deg= mean([pix_degree_height pix_degree_width])
 %% Scale for Parameters 
 % scale based on the Window Width in pixels 
 % inputs in degrees
-
-Scale.SizeofDots=SizeofDots*pix_deg/Window_Width_pixels
-Scale.SizeofDisk=SizeofDisk*pix_deg/Window_Width_pixels
+Scale.SizeofDots=SizeofDots*pix_deg/Window_Width_pixels;
+Scale.SizeofDisk=SizeofDisk*pix_deg/Window_Width_pixels;
 Scale.DepthMagnitude=DepthMagnitude*pix_deg/Window_Width_pixels
 

@@ -39,8 +39,8 @@ DVA=5;
 PPD_offset= DVA* pix_deg; %147.21 pixels 
 
 % Left and Right Periphery (MGR CALCULATION) 
-inferior_position_left= round(Fixation_Pixels_left(2) + OuterRing - InnerRing);
-inferior_position_right= round(Fixation_Pixels_right(2) + OuterRing - InnerRing);
+inferior_position_left= round(Fixation_Pixels_left(2) + OuterRing + InnerRing);
+inferior_position_right= round(Fixation_Pixels_right(2) + OuterRing + InnerRing);
 central_position_left= round(Fixation_Pixels_left(2) + OuterRing - ((OuterRing-InnerRing)/2));
 central_position_right= round(Fixation_Pixels_right(2) + OuterRing - ((OuterRing-InnerRing)/2));
 
@@ -62,6 +62,8 @@ leftp_right=[leftp_position_right, Fixation_Pixels_right(2)];
 rightp_left=[rightp_position_left, Fixation_Pixels_left(2)];
 rightp_right=[rightp_position_right, Fixation_Pixels_right(2)];
 
+
+addpath('plot_locations')
 
 % inferior 
 plotgrid_rect(inferiorleft, inferior_right, DiskRadius, InnerRing, OuterRing, rect_half, Fixation_Pixels_left, Fixation_Pixels_right, h)

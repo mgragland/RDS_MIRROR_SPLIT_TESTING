@@ -1,6 +1,7 @@
 rng('shuffle');   
 KbName('UnifyKeyNames');
 %--- get design parameters, subject information, display information, instruction information, output file name
+
 [Use_Default_Or_Review, Subject_Info, design, Instruction_Pages_Info, SetUp_Info] = Initialization();
 try
     ListenChar(2); %--- prevent matlab listen to keyboard entries.
@@ -9,7 +10,8 @@ try
     if design.GazeTracking_Or_Not ==1
         EyeTracker_Info = SetUp_EyeTracker();
         SetUp_Info.EyeTracker_Info = EyeTracker_Info    
-    end                         
+    end        
+    
     % Open PTB
     startPTB(SetUp_Info)
     

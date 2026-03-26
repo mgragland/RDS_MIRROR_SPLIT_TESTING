@@ -48,7 +48,7 @@ InnerRing_Deg=InnerRing/pix_deg; % 5 degrees
 [scalelocations_FLAP, PPD_offset, pixelLocations]=degreevisualanglecalc(5, pix_deg_FLAP, pix_degree_width, pix_degree_height, Window_Width_pixels, InnerRing, OuterRing, Fixation_Pixels) 
 
 %% Plotting:  
-if plot==1; 
+if plot==1
 %function plotgrid(center_x, center_y, disk_radius, inner_ring_radius, outer_ring_radius, fixation_x, fixation_y)
 figure
 plotgrid(pixelLocations(3),Fixation_Pixels(2), DiskRadius, InnerRing, OuterRing, Fixation_Pixels(1),Fixation_Pixels(2), PPD_offset, 2, pix_deg_FLAP)

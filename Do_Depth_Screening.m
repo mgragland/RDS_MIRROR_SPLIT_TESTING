@@ -12,7 +12,7 @@ Give_test = 1;
 while Give_test ==1
     
     Word_list = {'Here'  'Where'  'There'};
-    debug_word_list= {'DOG' 'CAT'};
+    % debug_word_list= {'DOG' 'CAT'};
     location_xy = [0.2, 0.3;  0.3, 0.5;  0.4, 0.7];
     Depth_Sign_list  = [0, 1, -1];
     for LeftOrRight =1:2
