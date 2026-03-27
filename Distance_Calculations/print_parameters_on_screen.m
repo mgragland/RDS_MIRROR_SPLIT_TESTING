@@ -25,11 +25,10 @@ pix_deg= mean([pix_degree_height pix_degree_width])
 %% Scale for Parameters 
 % scale based on the Window Width in pixels 
 % inputs in degrees
-Scale.SizeofDots=(SizeofDots*pix_deg)/Window_Width_pixels
-Scale.SizeofDisk=(SizeofDisk*pix_deg)/Window_Width_pixels
-Scale.DepthMagnitude=(DepthMagnitude*pix_deg)/Window_Width_pixels
-
-%% Distance Calculations
-[scalelocations, PPD_offset, pixelLocations]=degreevisualanglecalc(5, pix_deg, pix_degree_width, pix_degree_height, Window_Width_pixels, InnerRing, OuterRing, Fixation_Pixels) 
+Scale.SizeofDots=SizeofDots/pix_deg
+Scale.SizeofDisk=SizeofDisk/pix_deg
+Scale.DepthMagnitude=DepthMagnitude/pix_deg
+Scale.OuterRing=OuterRing/pix_deg
+Scale.InnerRing=InnerRing/pix_deg
 
 

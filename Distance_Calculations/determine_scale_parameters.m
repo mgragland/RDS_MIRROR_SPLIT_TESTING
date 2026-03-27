@@ -1,7 +1,7 @@
 Calculation_RDS_prompt={'PTB?', 'Display Width (mm)', 'Display Height (mm)', 'Display Width (pixels)', 'Display Height (pixels)', 'DVA (Distance to Stimulus)', 'Size of Disk (radius)', 'Size of Dots', 'Depth Magnitude', 'Stimulus Center', 'Distance from observer to screen'}
 Calculation__RDS_dialog_title='Give_Exp_Information';
 num_lines=1;
-Calculation__RDS_default_answer={'no', '698', '393',  '1920', '1080', '5', '2.5', '0.087', '0.087' , '700'};
+Calculation__RDS_default_answer={'no', '597', '336',  '2550', '1440', '5', '2.5', '0.087', '0.087' , '0', '570'};
 Calculation_RDS_info=inputdlg(Calculation_RDS_prompt,Calculation__RDS_dialog_title,num_lines,Calculation__RDS_default_answer);
 Calculation_RDS_info=Calculation_RDS_info';
 ptb = Calculation_RDS_info{1};
@@ -15,7 +15,7 @@ if strcmp(ptb, 'no')
     SizeofDisk=  str2double(Calculation_RDS_info{7}); 
     SizeofDots=str2double(Calculation_RDS_info{8});
     DepthMagnitude=str2double(Calculation_RDS_info{9});
-    distance_observer_to_screen= str2double(Calculation_RDS_info{10});
+    distance_observer_to_screen= str2double(Calculation_RDS_info{11});
 
 elseif strcmp(ptb, 'yes')
     PsychImaging('PrepareConfiguration');
@@ -30,7 +30,7 @@ elseif strcmp(ptb, 'yes')
     SizeofDisk=  str2double(Calculation_RDS_info{7});
     SizeofDots=str2double(Calculation_RDS_info{8});
     DepthMagnitude=str2double(Calculation_RDS_info{9});
-    distance_observer_to_screen= str2double(Calculation_RDS_info{10});
+    distance_observer_to_screen= str2double(Calculation_RDS_info{11});
 end
 
 %% Calculate Pixels/Degree

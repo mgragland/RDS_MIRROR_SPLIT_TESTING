@@ -31,10 +31,10 @@ design = Update_design_by_SetUp_Info(SetUp_Info, design);
 
 
 %% Added by MGR to ensure that the calculations of stimuli on screen are correct; debug mode
-addpath('Distance_Calculations')
-
-% Print Out Visual Parameters for stimuli and wait for approval 
-print_parameters_on_screen(design,SetUp_Info)
+% addpath('Distance_Calculations')
+% 
+% % Print Out Visual Parameters for stimuli and wait for approval 
+% print_parameters_on_screen(design,SetUp_Info)
 
 
 

@@ -35,7 +35,7 @@ DisplayReference_xy_in_Scale_index = entry_count;
 %---- Information about Sizes of the stimuli, in design.Depth_Magnitudes_in_Scale, design.Dot_Radiuses_in_Scale, design.Disk_Radiuses_in_Scale, design.Ring_InnerRadiuses_in_Scale, design.Ring_OuterRadiuses_in_Scale, design.FixationCross_Size_in_Scale,
 entry_count = entry_count +1;
 txt.prompt= 'magnitude of the depth step, dot radius, disk radius, ring inner radius, outer radius, size of the fixation cross, as fractions of window width'; 
-txt.default_answer= '0.002, 0.002, 0.083, 0.085, 0.108, 0.010';
+txt.default_answer= '0.002, 0.002, 0.083, 0.085, 0.108, 0.010'; % ZP Default
 Exp_prompt = [Exp_prompt, {txt.prompt}]; Exp_default_answer = [Exp_default_answer, {txt.default_answer}];
 Size_info_index = entry_count;
 
@@ -55,7 +55,8 @@ StimulusLocation_info_index = entry_count;
 entry_count = entry_count +1;
 txt.prompt='[x1, y1]; [x2, y2]; [x3, y3]; ... deviations of the main fixation center locations from the reference display location (e.g., display center), one for each stimulus center, as a fraction of the window width';
 % txt.default_answer='[0, 0]; [0, 0]; [0, 0]'; % Default 
-txt.default_answer='[0, -0.1748]; [0, 0]; [0, -0.1748]';  %lower visual field for peripheral 
+txt.default_answer='[0, -0.1748]; [0, 0]; [0, -0.1748]';  %lower visual field for peripheral
+
 Exp_prompt = [Exp_prompt, {txt.prompt}]; Exp_default_answer = [Exp_default_answer, {txt.default_answer}];
 mainFixationLocation_info_index = entry_count;
 

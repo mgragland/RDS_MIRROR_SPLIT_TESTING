@@ -53,3 +53,4 @@ SetUp_Info.BlackColor = BlackColor;
 SetUp_Info.GrayColor = GrayColor;
 SetUp_Info.Background_ColorVector = Background_ColorVector;
 SetUp_Info.FrameRate  = FrameRate;
+
