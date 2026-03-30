@@ -55,7 +55,10 @@ StimulusLocation_info_index = entry_count;
 entry_count = entry_count +1;
 txt.prompt='[x1, y1]; [x2, y2]; [x3, y3]; ... deviations of the main fixation center locations from the reference display location (e.g., display center), one for each stimulus center, as a fraction of the window width';
 % txt.default_answer='[0, 0]; [0, 0]; [0, 0]'; % Default 
-txt.default_answer='[0, -0.1748]; [0, 0]; [0, -0.1748]';  %lower visual field for peripheral
+% txt.default_answer='[0, -0.1748]; [0, 0]; [0, -0.1748]';  %lower visual field for peripheral v_d=570
+txt.default_answer='[0, -0.1729]; [0, 0]; [0, -0.1729]';  %lower visual field for peripheral v_d=570, deg= 6.25
+
+% txt.default_answer= '[0, -0.2086]; [0, 0]; [0, -0.2086]'; %lower visual field for peripheral, v_d= 700
 
 Exp_prompt = [Exp_prompt, {txt.prompt}]; Exp_default_answer = [Exp_default_answer, {txt.default_answer}];
 mainFixationLocation_info_index = entry_count;
@@ -65,7 +68,10 @@ entry_count = entry_count +1;
 txt.prompt='like above, but for secondary fixation centers, one for each stimulus center above';
 % txt.default_answer= '[0,0]; [0, 0]; [0,0]'; %out of blind spot 
 %txt.default_answer='[-0.1769, -0.0964]; [0, 0]; [0.1769, -0.0964]';
-txt.default_answer= '[0, -0.1748]; [0, 0]; [0, -0.1748]'; %lower visual field for peripheral 
+% txt.default_answer= '[0, -0.1748]; [0, 0]; [0, -0.1748]'; %lower visual field for peripheral, v_d= 570 
+txt.default_answer= '[0, -0.1729]; [0, 0]; [0, -0.1729]'; %lower visual field for peripheral, v_d= 570 
+% txt.default_answer= '[0, -0.2086]; [0, 0]; [0, -0.2086]'; %lower visual field for peripheral, v_d= 700
+
 %txt.default_answer='[-0.198, -0.0965]; [0, 0]; [0.198, -0.0965]'; % Zhaoping Default
 Exp_prompt = [Exp_prompt, {txt.prompt}]; Exp_default_answer = [Exp_default_answer, {txt.default_answer}];
 secondaryFixationLocation_info_index = entry_count;

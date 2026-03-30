@@ -32,7 +32,11 @@ while Give_test ==1
             for i = 1:3
                 DrawFormattedText(Window_ID, Word_list{i}, location_xy(i, 1)* Window_Width + 3*Depth_Sign_list(i)*design.Depth_Magnitudes_in_Pixel, location_xy(i,2)*Window_Height, BlackColor);
                 fprintf(Word_list{i})
-                Depth_Sign_list(i)
+                if Depth_Sign_list(i)==1
+                    fprintf('FRONT')
+                elseif Depth_Sign_list(i)==-1
+                    fprintf('BEHIND')
+                end
             end
         end
     end

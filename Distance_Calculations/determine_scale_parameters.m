@@ -47,3 +47,6 @@ Scale.SizeofDots=SizeofDots*pix_deg/Window_Width_pixels;
 Scale.SizeofDisk=SizeofDisk*pix_deg/Window_Width_pixels;
 Scale.DepthMagnitude=DepthMagnitude*pix_deg/Window_Width_pixels
 
+%% Fixation 
+
+
