@@ -4,8 +4,8 @@
 % savefigures=['C:\Users\raglandm\Desktop\RDS DATA\figures\' subject]
 
 % For group level analysis 
-directoryPath=['C:\Users\raglandm\Desktop\RDS DATA\Testing_Parameters\Location\Inferior_PeripheralVisField\Fixation Moves\Feb']
-savefigures=['C:\Users\raglandm\Desktop\RDS DATA\Testing_Parameters\Location\Inferior_PeripheralVisField\Fixation Moves\Feb\figures']
+directoryPath=['C:\Users\raglandm\Desktop\RDS DATA\FLAP_DATA']
+savefigures=['C:\Users\raglandm\Desktop\RDS DATA\FLAP_DATA\FIGURES']
 
 if ~exist("savefigures", 'dir')
     mkdir(savefigures);
@@ -38,10 +38,10 @@ for i = 1:length(fileList)
         load(filePath)
 
         % Determine the location of the fixation cross for each condition 
-
+        fixation_y=[720, 499]; % central vs peripheral
         % Determine Accuracy of Trials 
         if lowervis==1;
-            [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count, savefigures)
+            [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count, savefigures, fixation_y)
             Accuracy{2,i}=Accuracy_Anti;
             Accuracy{1,i}=Accuracy_Corr;
         elseif uppervis==1;

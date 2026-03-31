@@ -13,7 +13,7 @@ while Give_test ==1
     
     Word_list = {'Here'  'Where'  'There'};
     % debug_word_list= {'DOG' 'CAT'};
-    location_xy = [0.2, 0.3;  0.3, 0.4;  0.4, 0.5];
+    location_xy = [0.3, 0.4;  0.4, 0.5;  0.5, 0.6];
     % location_xy = [0.2, 0.3;  0.3, 0.5;  0.4, 0.7]; % Default
 
     Depth_Sign_list  = [0, 1, -1];
@@ -31,11 +31,12 @@ while Give_test ==1
             Depth_Sign_list = Depth_Sign_list(randperm(3));
             for i = 1:3
                 DrawFormattedText(Window_ID, Word_list{i}, location_xy(i, 1)* Window_Width + 3*Depth_Sign_list(i)*design.Depth_Magnitudes_in_Pixel, location_xy(i,2)*Window_Height, BlackColor);
-                fprintf(Word_list{i})
-                if Depth_Sign_list(i)==1
-                    fprintf('FRONT')
-                elseif Depth_Sign_list(i)==-1
-                    fprintf('BEHIND')
+                if Depth_Sign_list(i) == 1
+                    fprintf('%s is BEHIND\n', Word_list{i});
+                elseif Depth_Sign_list(i) == -1
+                    fprintf('%s is in FRONT\n', Word_list{i});
+                elseif Depth_Sign_list(i) == 0
+                    fprintf('%s is in MIDDLE\n', Word_list{i});
                 end
             end
         end

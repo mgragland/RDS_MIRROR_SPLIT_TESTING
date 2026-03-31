@@ -79,7 +79,6 @@ for i = 1:N_Coherence
         end
     end
 end
-saveas(gcf, fileName1, 'jpg');
 
 
 [numrows, numcols, numdims]=size(Accuracies) 
@@ -123,7 +122,6 @@ for i = 1:N_Coherence
         end
     end
 end
-saveas(gcf, fileName2, 'jpg');
 
 
 
