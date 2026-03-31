@@ -30,7 +30,7 @@ elseif Instruction_Page_Info.Type ==2  %--- Do a trial
         DoATrial(design, SetUp_Info, condition, DepthOrder, practice_or_test);
     
     Write_txt_to_display(SetUp_Info.Window_ID, 'Enter RightArrow to proceed, enter LeftArrow to go back to repeat this step', ...
-        0.1, 0.5, design.Text_Color);
+        0.25, 0.5, design.Text_Color);
     Goto_Next_or_PreviousPage =  Wait_For_RightOrLeftArrowKey(design);
 end
 

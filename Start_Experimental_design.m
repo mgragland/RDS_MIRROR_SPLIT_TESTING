@@ -69,7 +69,7 @@ txt.prompt='like above, but for secondary fixation centers, one for each stimulu
 % txt.default_answer= '[0,0]; [0, 0]; [0,0]'; %out of blind spot 
 %txt.default_answer='[-0.1769, -0.0964]; [0, 0]; [0.1769, -0.0964]';
 % txt.default_answer= '[0, -0.1748]; [0, 0]; [0, -0.1748]'; %lower visual field for peripheral, v_d= 570 
-txt.default_answer= '[0, -0.1729]; [0, 0]; [0, -0.1729]'; %lower visual field for peripheral, v_d= 570 
+txt.default_answer= '[0, -0.1729]; [0, 0]; [0, -0.1729]'; %lower visual field for peripheral, v_d= 570, dva=6.25 
 % txt.default_answer= '[0, -0.2086]; [0, 0]; [0, -0.2086]'; %lower visual field for peripheral, v_d= 700
 
 %txt.default_answer='[-0.198, -0.0965]; [0, 0]; [0.198, -0.0965]'; % Zhaoping Default

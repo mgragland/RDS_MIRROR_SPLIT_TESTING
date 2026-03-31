@@ -12,13 +12,13 @@ while Start_Instructions ==1
         Screen('SelectStereoDrawBuffer', Window_ID, LeftOrRight-1);
         Screen('TextSize', SetUp_Info.Window_ID, design.Text_FontSize);
         DrawFormattedText(Window_ID, 'Next are the instructions for this data taking session', ...
-						0.5* Window_Width, 0.3*Window_Height, design.Text_Color);
+						0.25* Window_Width, 0.3*Window_Height, design.Text_Color);
         DrawFormattedText(Window_ID, 'Enter the Right Arrow key to proceed from one instruction sentence/page to the next', ...
-					 0.5* Window_Width, 0.4*Window_Height, design.Text_Color);
+					 0.25* Window_Width, 0.4*Window_Height, design.Text_Color);
         
         DrawFormattedText(Window_ID, 'and enter the Left Arrow key to go back to the previous sentence or instruction page ', ...
-				0.5* Window_Width, 0.45*Window_Height, design.Text_Color);
-        DrawFormattedText(Window_ID, 'enter Right Arrow key to proceed', 0.5* Window_Width, 0.5*Window_Height, design.Text_Color);
+				0.25* Window_Width, 0.45*Window_Height, design.Text_Color);
+        DrawFormattedText(Window_ID, 'enter Right Arrow key to proceed', 0.25 * Window_Width, 0.5*Window_Height, design.Text_Color);
     end
     Screen('DrawingFinished', Window_ID,2);
     Screen('Flip', Window_ID);

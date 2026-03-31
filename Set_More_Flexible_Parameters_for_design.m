@@ -25,7 +25,7 @@ PracticeTrials_ThresholdAccuracy_index = entry_count;
 %--- enter 1 or 0,  for (1) design.GazeTracking_Or_Not and (2) design.GazeContingent_Or_Not, for whether there is gaze is tracked, and gaze contingency is required for starting a trial
 entry_count = entry_count +1;
 txt.prompt= 'enter 1 or 0 for whether to give instructions';
-txt.default_answer= '0';
+txt.default_answer= '1';
 Exp_prompt = [Exp_prompt, {txt.prompt}]; Exp_default_answer = [Exp_default_answer, {txt.default_answer}];
 GiveInstructionOrNot_index = entry_count;
 
@@ -68,14 +68,14 @@ NPracticeTrials_index2 = entry_count;
 %--- number of testing trials of static/dynamic RDS in correlated conditions, design.N_TestingTrials_Each_Coherence_FrameDuration_Location(1, :, :),  when RDS is at left, center, and right location
 entry_count = entry_count +1;
 txt.prompt= 'number of testing trials of (1) static and (2) dynamic RDS in correlated conditions, when RDS is at left, center, and right location';
-txt.default_answer= '[0, 0, 0]; [50, 50, 0]';
+txt.default_answer= '[0, 0, 0]; [100, 100, 0]';
 Exp_prompt = [Exp_prompt, {txt.prompt}]; Exp_default_answer = [Exp_default_answer, {txt.default_answer}];
 NTestingTrials_index1 = entry_count;
 
 %--- number of testing trials of static/dynamic RDS in anticorrelated conditions, design.N_TestingTrials_Each_Coherence_FrameDuration_Location(2, :, :),  when RDS is at left, center, and right location
 entry_count = entry_count +1;
 txt.prompt= 'number of testing trials of (1) static and (2) dynamic RDS in anticorrelated conditions, when RDS is at left, center, and right location';
-txt.default_answer= '[0, 0, 0]; [50, 50, 0]';
+txt.default_answer= '[0, 0, 0]; [100, 100, 0]';
 Exp_prompt = [Exp_prompt, {txt.prompt}]; Exp_default_answer = [Exp_default_answer, {txt.default_answer}];
 NTestingTrials_index2 = entry_count;
 

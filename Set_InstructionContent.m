@@ -8,14 +8,14 @@ Trial_Character.RDS_Location_Index = 2;    %central location
 Trial_Character.DepthOrder = 1;
 Trial_Character.Real_Prob_Noise_Anti_Parameters = [];
 Instruction(1).txt = 'You will see images like this, a disk surface, and a ring surface, each with random dots on it';
-Instruction(1).xy = [0.25, 0.3];
+Instruction(1).xy = [0.25, 0.25];
 Instruction(2).txt = 'Your task is to report whether the disk is in front of, or behind, the surrounding ring';
-Instruction(2).xy = [0.25, 0.35];
+Instruction(2).xy = [0.25, 0.3];
 Instruction(3).txt = 'tell me what you see in this example, is the disk in front of, or behind, the ring?';
-Instruction(3).xy = [0.25, 0.4];
+Instruction(3).xy = [0.25, 0.35];
 Instruction(4).txt = sprintf('During the experiment, for each trial, press %s to report in front, and press %s to report behind', ...
 		design.Response_Buttons.keyName{1}, design.Response_Buttons.keyName{2});
-Instruction(4).xy = [0.25, 0.45];
+Instruction(4).xy = [0.25, 0.4];
 %
 This_Instruction_Page_Info.Type = 1;
 This_Instruction_Page_Info.Have_Image_Sound_Or_Nothing = 1;
@@ -31,7 +31,7 @@ Instruction_Pages_Info{Page_count} =This_Instruction_Page_Info;
 Trial_Character.DepthOrder = -1;
 clear Instruction;
 Instruction(1).txt = 'Here is an example when the disk is behind the ring, can you see the difference from the previous one?';
-Instruction(1).xy = [0.3, 0.35];
+Instruction(1).xy = [0.25, 0.25];
 %%
 This_Instruction_Page_Info.Type = 1;
 This_Instruction_Page_Info.Have_Image_Sound_Or_Nothing = 1;
@@ -46,11 +46,11 @@ Instruction_Pages_Info{Page_count} =This_Instruction_Page_Info;
 clear Instruction;
 RDS_Location_Index = 3;
 Instruction(1).txt = 'Sometimes the depth surfaces are displayed at a different location, but your task remains the same';
-Instruction(1).xy = [0.25, 0.25];
+Instruction(1).xy = [0.25, 0.2];
 Instruction(2).txt = 'This example shows the second possible location';
-    Instruction(2).xy = [0.25, 0.3];
+    Instruction(2).xy = [0.25, 0.25];
 Instruction(3).txt = 'Do you see how the fixation cross moved?';
-    Instruction(3).xy = [0.25, 0.35];
+    Instruction(3).xy = [0.25, 0.30];
 %
 Trial_Character.RDS_Location_Index = 3;    %third location
 
@@ -69,12 +69,12 @@ clear Instruction;
 Trial_Character.RDS_Location_Index = 3;
 Trial_Character.DepthOrder = 1;
 Instruction(1).txt = 'Your must move your eyes to the fixation cross';
-Instruction(1).xy = [0.25, 0.15];
+Instruction(1).xy = [0.25, 0.2];
 if design.Add_FixationCross ==1
     Instruction(2).txt = 'Keep your eyes on the fixation cross while doing this task, till the stereograms disappear or your answer will not count';
-    Instruction(2).xy = [0.25, 0.2];
+    Instruction(2).xy = [0.25, 0.25];
     Instruction(3).txt = 'When the disk and ring are far from this cross, it can be difficult, please try your best';
-    Instruction(3).xy = [0.25, 0.25];
+    Instruction(3).xy = [0.25, 0.3];
 end
 This_Instruction_Page_Info.Type = 1;
 This_Instruction_Page_Info.Have_Image_Sound_Or_Nothing = 1;
@@ -88,12 +88,12 @@ Instruction_Pages_Info{Page_count} =This_Instruction_Page_Info;
 if design.GazeTracking_Or_Not ==1 & design.Add_FixationCross ==1
 	clear Instruction;
         Instruction(1).txt = 'Your gaze position is monitored by our eye tracker, ';
-        Instruction(1).xy = [0.45, 0.35];
+        Instruction(1).xy = [0.25, 0.25];
         Instruction(2).txt = 'so if your gaze strayed from the fixation point, the trial is not valid';
-        Instruction(2).xy = [0.45, 0.40];
+        Instruction(2).xy = [0.25, 0.35];
         if design.GazeContingent_Or_Not==1
             Instruction(3).txt = 'the test input will not appear until the tracker verified that you are fixating properly';
-            Instruction(3).xy = [0.4, 0.85];
+            Instruction(3).xy = [0.25, 0.85];
         end
 	This_Instruction_Page_Info.Type = 1;
 	This_Instruction_Page_Info.Have_Image_Sound_Or_Nothing = 1;
@@ -160,12 +160,12 @@ if design.GazeTracking_Or_Not ==1
 else
     Instruction(1).txt = 'Let me show you the procedures in an example trial';
 end
-Instruction(1).xy = [0.25, 0.2];
+Instruction(1).xy = [0.25, 0.25];
 Instruction(2).txt = sprintf('Reminder: for each trial, press %s to report in front, and press %s to report behind', ...
 				design.Response_Buttons.keyName{1}, design.Response_Buttons.keyName{2});
-Instruction(2).xy = [0.25, 0.25];
+Instruction(2).xy = [0.25, 0.30];
 Instruction(3).txt = 'Press RightArrow to proceed';
-Instruction(3).xy = [0.25, 0.3];
+Instruction(3).xy = [0.25, 0.35];
 %
 This_Instruction_Page_Info.Type = 1;
 This_Instruction_Page_Info.Have_Image_Sound_Or_Nothing = 0;
@@ -199,11 +199,11 @@ Instruction_Pages_Info{Page_count} =This_Instruction_Page_Info;
 clear Instruction;
 Instruction(1).txt = sprintf('Each trial starts with a prompt ---%s %s --- you press a button to start the trial', ...
                                 design.TrialStartPrompt{1}.txt, design.TrialStartPrompt{2}.txt);
-Instruction(1).xy = [0.25, 0.3];
+Instruction(1).xy = [0.25, 0.25];
 Instruction(2).txt = 'This prompt image also includes a box in which the stereogram  will appear, so you can prepare yourself for it';
-Instruction(2).xy = [0.25, 0.35];
+Instruction(2).xy = [0.25, 0.3];
 Instruction(3).txt = 'you may take your time to start each trial, and take your time to give response to the trial';
-Instruction(3).xy = [0.25, 0.4];
+Instruction(3).xy = [0.25, 0.35];
 % Instruction(4).txt = 'By taking your time  to press a button to start a trial, you could take a short pause/rest before a trial starts';
 % Instruction(4).xy = [0.1, 0.7];
 %
@@ -282,15 +282,15 @@ Instruction_Pages_Info{Page_count} =This_Instruction_Page_Info;
 %--- Next page of instruction, modify whatever needs to be modified from the last page.
 clear Instruction;
 Instruction(1).txt = 'Remember that sometimes the  stereogram is away from the fixation cross';
-Instruction(1).xy = [0.25, 0.3];
+Instruction(1).xy = [0.25, 0.25];
 Instruction(2).txt = 'meanwhile, you need to keep your fixation at the central cross';
-Instruction(2).xy = [0.25, 0.35];
+Instruction(2).xy = [0.25, 0.3];
 if design.GazeTracking_Or_Not ==1
     Instruction(3).txt = 'let us show you an example, although we do not track and check your gaze in this demo';
 else
     Instruction(3).txt = 'let us show you an example';
 end
-Instruction(3).xy = [0.25, 0.4];
+Instruction(3).xy = [0.25, 0.35];
 %
 This_Instruction_Page_Info.Instruction_TextInfo = Instruction;
 This_Instruction_Page_Info.Trial_Character = Trial_Character;
@@ -356,7 +356,7 @@ Instruction_Pages_Info{Page_count} =This_Instruction_Page_Info;
 %--- Next page of instruction, modify whatever needs to be modified from the last page.
 clear Instruction;
 Instruction(1).txt = 'let us show you another example, it is noiser, you should still try your best';
-Instruction(1).xy = [0.25, 0.4];
+Instruction(1).xy = [0.25, 0.25];
 %
 This_Instruction_Page_Info.Instruction_TextInfo = Instruction;
 This_Instruction_Page_Info.Trial_Character = Trial_Character;
@@ -382,7 +382,7 @@ Instruction_Pages_Info{Page_count} =This_Instruction_Page_Info;
 %--- Next page of instruction, modify whatever needs to be modified from the last page.
 clear Instruction;
 Instruction(1).txt = 'let us show you another example, it is even noiser, you should always try your best';
-Instruction(1).xy = [0.25, 0.4];
+Instruction(1).xy = [0.25, 0.25];
 %
 This_Instruction_Page_Info.Instruction_TextInfo = Instruction;
 This_Instruction_Page_Info.Trial_Character = Trial_Character;
@@ -409,11 +409,11 @@ Instruction_Pages_Info{Page_count} =This_Instruction_Page_Info;
 %--- Next page of instruction, modify whatever needs to be modified from the last page.
 clear Instruction;
 Instruction(1).txt = 'Let us show you an example when the noisy stereogram appear at another location away from the central fixation cross';
-Instruction(1).xy = [0.25, 0.3];
+Instruction(1).xy = [0.25, 0.25];
 Instruction(2).txt = 'and remember, you need to keep your fixation at the cross (till the mask appears)';
-Instruction(2).xy = [0.25, 0.35];
+Instruction(2).xy = [0.25, 0.3];
 Instruction(3).txt = 'Enter RightArrow to see an example';
-Instruction(3).xy = [0.25, 0.5];
+Instruction(3).xy = [0.25, 0.35];
 %
 This_Instruction_Page_Info.Instruction_TextInfo = Instruction;
 This_Instruction_Page_Info.Trial_Character = Trial_Character;

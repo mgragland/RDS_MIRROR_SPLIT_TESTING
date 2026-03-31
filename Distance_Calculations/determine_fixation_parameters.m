@@ -1,7 +1,7 @@
 Calculation_RDS_prompt={'PTB?', 'Display Width (mm)', 'Display Height (mm)', 'Display Width (pixels)', 'Display Height (pixels)', 'DVA (Distance to Stimulus)', 'Size of Inner Ring (radius)', 'Size of Outer Ring (radius)', 'Stimulus Center_X_scale', 'Stimulus Center_Y_scale', 'Distance from observer to screen'}
 Calculation__RDS_dialog_title='Give_Exp_Information';
 num_lines=1;
-Calculation__RDS_default_answer={'no', '597', '336',  '2550', '1440', '5', '4.8', '6.12', '0', '0.094', '570'};
+Calculation__RDS_default_answer={'no', '597', '336',  '2550', '1440', '6.25', '4.8', '6.12', '0', '0.094', '570'};
 Calculation_RDS_info=inputdlg(Calculation_RDS_prompt,Calculation__RDS_dialog_title,num_lines,Calculation__RDS_default_answer);
 Calculation_RDS_info=Calculation_RDS_info';
 ptb = Calculation_RDS_info{1};
