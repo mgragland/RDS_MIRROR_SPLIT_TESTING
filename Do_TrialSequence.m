@@ -26,7 +26,7 @@ if N_allTrials > 0
         else
             % central or peripheral trial
             % define central vs peripheral
-            if condition.y_fixation==576
+            if condition.y_fixation==720 % central
                 central_peripheral='central';
             else
                 central_peripheral='peripheral';
