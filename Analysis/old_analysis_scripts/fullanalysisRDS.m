@@ -4,7 +4,7 @@
 % savefigures=['C:\Users\raglandm\Desktop\RDS DATA\figures\' subject]
 
 % For group level analysis 
-directoryPath=['C:\Users\raglandm\Desktop\RDS DATA\FLAP_DATA']
+directoryPath=['C:\Users\raglandm\Desktop\RDS DATA\FLAP_DATA\data']
 savefigures=['C:\Users\raglandm\Desktop\RDS DATA\FLAP_DATA\FIGURES']
 
 if ~exist("savefigures", 'dir')
@@ -27,7 +27,7 @@ group=1; %1=yes to group analysis
 % Loop through each file in the directory
 for i = 1:length(fileList)
     count=count+1;
-    if i==1;
+    if i==1
         Accuracy=cell(2,length(fileList));
     end
     % Check if the current item is a file (not a folder)
@@ -40,15 +40,15 @@ for i = 1:length(fileList)
         % Determine the location of the fixation cross for each condition 
         fixation_y=[720, 499]; % central vs peripheral
         % Determine Accuracy of Trials 
-        if lowervis==1;
+        if lowervis==1
             [Accuracy_Anti,Accuracy_Corr]=lowervisualfield(filePath, count, savefigures, fixation_y)
             Accuracy{2,i}=Accuracy_Anti;
             Accuracy{1,i}=Accuracy_Corr;
-        elseif uppervis==1;
+        elseif uppervis==1
             [Accuracy_Anti,Accuracy_Corr]=uppervisualfield(filePath, count)
             Accuracy{2,i}=Accuracy_Anti;
             Accuracy{1,i}=Accuracy_Corr;
-        elseif lowervis==2;
+        elseif lowervis==2
             [Accuracy_Anti,Accuracy_Corr, Accuracy_Table,SignalDetect_Table]=lower_peripheralvisualfield(filePath, count)
             Accuracy{2,i}=Accuracy_Anti;
             Accuracy{1,i}=Accuracy_Corr;

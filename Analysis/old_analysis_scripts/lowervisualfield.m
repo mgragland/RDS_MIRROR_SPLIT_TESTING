@@ -41,13 +41,13 @@ for i=1:length(Trials_Anti_Dynamic)
     else
         continue
     end
-    if Trials_Anti_Dynamic(i).condition.y_fixation==fixation_y(1) % 499, 720 
+    if Trials_Anti_Dynamic(i).condition.y_fixation==fixation_y(1) % 720, 499
         if Trials_Anti_Dynamic(i).FrontOrBack==Response
             Correct_central_anti=Correct_central_anti+1; 
         else
             Incorrect_central_anti=Incorrect_central_anti+1;
         end
-    elseif Trials_Anti_Dynamic(i).condition.y_fixation==fixation_y(2) %499, 720 
+    elseif Trials_Anti_Dynamic(i).condition.y_fixation==fixation_y(2) %720, 499
         if Trials_Anti_Dynamic(i).FrontOrBack==Response
             Correct_lower_anti=Correct_lower_anti+1; 
         else
