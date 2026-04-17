@@ -1,5 +1,5 @@
 % For group level analysis 
-directoryPath=['C:\Users\raglandm\Desktop\RDS DATA\FLAP_DATA\data']
+directoryPath=['C:\Users\raglandm\Desktop\ZP_COLLAB\RDS DATA\FLAP_DATA\data']
 savefigures=['C:\Users\raglandm\Desktop\RDS DATA\FLAP_DATA\FIGURES']
 
 if ~exist("savefigures", 'dir')
@@ -13,12 +13,14 @@ fileList = dir(directoryPath);
 % Filter out hidden files
 fileList = fileList(~startsWith({fileList.name}, '.'));
 group=1; %yes= 1 and no= 2
+graph=0; % 1= yes and 2= no
 Accuracy=cell(2,length(fileList));
 
 % Central vs Peripheral Y Fixation 
-fixation_y=[720, 499]; % central vs peripheral
+fixation_y=[720,499]; % central vs peripheral
 
-
+count=0;
+name={};
 % Loop through each file in the directory
 for i = 1:length(fileList)
     count=count+1;
@@ -30,16 +32,17 @@ for i = 1:length(fileList)
         load(filePath)
 
         % Determine Accuracy of Trials
-        [Accuracy_Anti,Accuracy_Corr]=individual_analysis(filePath, count, savefigures, fixation_y)
-        Accuracy{2,i}=Accuracy_Anti;
-        Accuracy{1,i}=Accuracy_Corr;
+        [Accuracy_Anti,Accuracy_Corr]=individual_analysis(filePath, count, savefigures, fixation_y, graph);
+         Accuracy{1,i}=Accuracy_Corr;
+         Accuracy{2,i}=Accuracy_Anti;
+         Accuracy{3,i}=fileList(i).name(1:6);
 
 
         % Determine reaction times for trials
-        rt_lowervisualfield(filePath, count, savefigures, fixation_y);
+        % rt_lowervisualfield(filePath, count, savefigures, fixation_y);
     end
 end
 
 if group==1
-    groupanalysis(Accuracy, lowervis, uppervis, multiple_sessions, savefigures)
+    groupanalysis(Accuracy, savefigures)
 end
